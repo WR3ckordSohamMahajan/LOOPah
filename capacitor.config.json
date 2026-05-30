@@ -1,0 +1,9 @@
+{
+  "appId": "com.yourname.markerplayer",
+  "appName": "Marker Player Pro",
+  "webDir": "www",
+  "server": {
+    "allowNavigation": ["*"],
+    "cleartext": true
+  }
+}
