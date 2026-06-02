@@ -14,89 +14,90 @@
       --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
       --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
       --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem; --space-5: 1.25rem; --space-6: 1.5rem; --space-8: 2rem;
-      --color-bg: #f7f6f2; --color-surface: #f9f8f5; --color-surface-2: #fbfbf9; --color-surface-offset: #f3f0ec; --color-border: #d4d1ca;
-      --color-text: #28251d; --color-text-muted: #7a7974; --color-text-inverse: #f9f8f4; --color-primary: #01696f; --color-primary-hover: #0c4e54;
-      --color-primary-highlight: #cedcd8; --color-blue: #006494; --color-success: #437a22; --color-error: #a12c7b; --radius-md: 0.5rem; --radius-lg: 0.75rem; --radius-xl: 1rem;
-      --font-body: 'Satoshi', Inter, sans-serif; --shadow-sm: 0 1px 2px rgba(0,0,0,.06); --shadow-md: 0 16px 40px rgba(0,0,0,.08); --transition: 180ms cubic-bezier(0.16,1,0.3,1);
+      --color-bg: #f2f1ec; --color-surface: #ffffff; --color-surface-2: #f7f6f2; --color-surface-offset: #eae7e1; --color-border: #dcdad4;
+      --color-text: #1a1917; --color-text-muted: #666460; --color-text-inverse: #ffffff; --color-primary: #0066cc; --color-primary-hover: #0052a3;
+      --color-primary-highlight: #e6f0fa; --color-blue: #0066cc; --color-success: #2e7d32; --color-error: #d32f2f; --radius-md: 0.5rem; --radius-lg: 0.75rem; --radius-xl: 1rem;
+      --font-body: 'Satoshi', Inter, sans-serif; --shadow-sm: 0 1px 3px rgba(0,0,0,.05), 0 1px 2px rgba(0,0,0,.1); --shadow-md: 0 10px 25px -5px rgba(0,0,0,.05), 0 8px 10px -6px rgba(0,0,0,.05); --transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
     }
     [data-theme="dark"] {
-      --color-bg: #171614; --color-surface: #1c1b19; --color-surface-2: #201f1d; --color-surface-offset: #1d1c1a; --color-border: #393836;
-      --color-text: #cdccca; --color-text-muted: #979694; --color-text-inverse: #2b2a28; --color-primary: #4f98a3; --color-primary-hover: #227f8b;
-      --color-primary-highlight: #313b3b; --color-blue: #5591c7; --color-success: #6daa45; --color-error: #d163a7; --shadow-sm: 0 1px 2px rgba(0,0,0,.2); --shadow-md: 0 16px 40px rgba(0,0,0,.35);
+      --color-bg: #0f0f11; --color-surface: #16161a; --color-surface-2: #1e1e24; --color-surface-offset: #121215; --color-border: #2a2a32;
+      --color-text: #e4e4ed; --color-text-muted: #8e8e9f; --color-text-inverse: #0f0f11; --color-primary: #3b82f6; --color-primary-hover: #2563eb;
+      --color-primary-highlight: #1d2433; --color-blue: #3b82f6; --color-success: #10b981; --color-error: #ef4444; --shadow-sm: 0 1px 2px rgba(0,0,0,.5); --shadow-md: 0 20px 25px -5px rgba(0,0,0,.3), 0 10px 10px -5px rgba(0,0,0,.3);
     }
     * { box-sizing: border-box; }
-    body { margin: 0; min-height: 100dvh; font-family: var(--font-body); color: var(--color-text); background: linear-gradient(180deg, var(--color-bg), var(--color-surface-offset)); }
+    body { margin: 0; min-height: 100dvh; font-family: var(--font-body); color: var(--color-text); background: var(--color-bg); letter-spacing: -0.01em; }
     button, input, textarea { font: inherit; }
     button, input[type="text"], input[type="file"], textarea {
-      border: 1px solid color-mix(in srgb, var(--color-text) 12%, transparent); background: var(--color-surface); color: var(--color-text); border-radius: var(--radius-md);
+      border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); border-radius: var(--radius-md);
     }
-    button { padding: .8rem 1rem; min-height: 44px; cursor: pointer; transition: all var(--transition); }
-    button:hover { background: var(--color-surface-2); border-color: color-mix(in srgb, var(--color-primary) 60%, var(--color-border)); }
+    button { padding: .7rem 1.2rem; min-height: 40px; font-weight: 500; cursor: pointer; transition: all var(--transition); display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; }
+    button:hover { background: var(--color-surface-2); border-color: var(--color-text-muted); }
     button.primary { background: var(--color-primary); color: var(--color-text-inverse); border-color: transparent; }
     button.primary:hover { background: var(--color-primary-hover); }
     button.active { background: var(--color-primary); color: var(--color-text-inverse); border-color: transparent; }
-    input[type="range"] { width: 100%; accent-color: var(--color-primary); }
-    input[type="text"], input[type="file"], textarea { width: 100%; padding: .8rem .9rem; min-height: 44px; }
+    input[type="range"] { width: 100%; accent-color: var(--color-primary); margin: 0.5rem 0; }
+    input[type="text"], input[type="file"], textarea { width: 100%; padding: .7rem .9rem; min-height: 40px; transition: border-color var(--transition); }
+    input[type="text"]:focus, textarea:focus { outline: none; border-color: var(--color-primary); }
     textarea { min-height: 100px; resize: vertical; }
-    .app { max-width: 1360px; margin: 0 auto; padding: 1.5rem; display: grid; gap: 1.5rem; }
-    .topbar, .panel { background: color-mix(in srgb, var(--color-surface) 92%, transparent); border: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent); border-radius: var(--radius-xl); box-shadow: var(--shadow-sm); backdrop-filter: blur(10px); }
-    .topbar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.25rem 1.5rem; flex-wrap: wrap; }
-    .brand { display: flex; gap: 1rem; align-items: center; }
-    .brand h1 { margin: 0; font-size: var(--text-xl); line-height: 1.05; }
-    .brand p, .muted { margin: 0; color: var(--color-text-muted); font-size: var(--text-sm); }
-    .logo { width: 42px; height: 42px; color: var(--color-primary); }
-    .main-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(320px, 1fr); gap: 1.5rem; align-items: start; }
-    .panel { padding: 1.25rem; }
-    .section-title { margin: 0 0 .35rem; font-size: var(--text-lg); }
+    .app { max-width: 1400px; margin: 0 auto; padding: 2rem; display: grid; gap: 2rem; }
+    .topbar, .panel { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-xl); box-shadow: var(--shadow-sm); }
+    .topbar { display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; padding: 1.5rem 2rem; flex-wrap: wrap; }
+    .brand { display: flex; gap: 1.25rem; align-items: center; }
+    .brand h1 { margin: 0; font-size: var(--text-xl); font-weight: 700; letter-spacing: -0.03em; }
+    .brand p, .muted { margin: 0; color: var(--color-text-muted); font-size: var(--text-sm); line-height: 1.5; }
+    .logo { width: 44px; height: 44px; color: var(--color-primary); }
+    .main-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(340px, 1fr); gap: 2rem; align-items: start; }
+    .panel { padding: 2rem; display: grid; gap: 1.5rem; }
+    .section-title { margin: 0; font-size: var(--text-lg); font-weight: 700; letter-spacing: -0.02em; position: relative; }
     .toolbar, .transport, .timeline-actions, .mode-row { display: flex; flex-wrap: wrap; gap: .75rem; }
-    .source-row, .control-grid, .meta-grid { display: grid; gap: .75rem; }
+    .source-row, .control-grid, .meta-grid { display: grid; gap: 1rem; }
     .source-row { grid-template-columns: 1fr; align-items: end; }
-    .control-grid { grid-template-columns: repeat(3, minmax(0,1fr)); margin-block: 1rem; }
-    .control-card, .loop-card, .meta-card { background: var(--color-surface-2); border: 1px solid color-mix(in srgb, var(--color-text) 8%, transparent); border-radius: var(--radius-lg); padding: 1rem; }
-    .control-head, .loop-card-head { display: flex; align-items: center; justify-content: space-between; gap: .75rem; margin-bottom: .75rem; }
-    .timeline-shell { margin-top: 1rem; min-width: 0; overflow: hidden; }
-    .zoom-bar { display: grid; grid-template-columns: auto 1fr auto auto; gap: .75rem; align-items: center; margin-bottom: .75rem; }
-    .wave-scroll { width: 100%; max-width: 100%; overflow-x: auto; overflow-y: hidden; border-radius: var(--radius-lg); border: 1px solid color-mix(in srgb, var(--color-text) 8%, transparent); background: linear-gradient(180deg, color-mix(in srgb, var(--color-primary) 10%, var(--color-surface)), var(--color-surface-2)); }
+    .control-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
+    .control-card, .loop-card, .meta-card { background: var(--color-surface-2); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem; }
+    .control-head, .loop-card-head { display: flex; align-items: center; justify-content: space-between; gap: .75rem; }
+    .control-head button { padding: 0.25rem 0.5rem; min-height: 26px; font-size: var(--text-xs); border-radius: 4px; }
+    .timeline-shell { min-width: 0; overflow: hidden; }
+    .zoom-bar { display: grid; grid-template-columns: auto 1fr auto auto; gap: 1rem; align-items: center; }
+    .wave-scroll { width: 100%; max-width: 100%; overflow-x: auto; overflow-y: hidden; border-radius: var(--radius-lg); border: 1px solid var(--color-border); background: var(--color-surface-offset); }
     .wave-stage { position: relative; width: 100%; min-width: 100%; max-width: none; height: 260px; }
     canvas { display: block; width: 100%; height: 260px; }
     .playhead, .active-loop-overlay, .loop-chip-overlay { position: absolute; top: 0; bottom: 0; pointer-events: none; }
     .playhead::after { content: ''; position: absolute; top: 0; bottom: 0; width: 2px; background: var(--color-error); }
-    .active-loop-overlay { background: color-mix(in srgb, var(--color-primary) 18%, transparent); border-inline: 2px solid color-mix(in srgb, var(--color-primary) 80%, transparent); }
-    .loop-chip-overlay { border-inline: 1px dashed color-mix(in srgb, var(--color-success) 70%, transparent); background: color-mix(in srgb, var(--color-success) 10%, transparent); }
+    .active-loop-overlay { background: color-mix(in srgb, var(--color-primary) 15%, transparent); border-inline: 2px solid var(--color-primary); }
+    .loop-chip-overlay { border-inline: 1px dashed var(--color-success); background: color-mix(in srgb, var(--color-success) 8%, transparent); }
     .marker-pin { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--color-blue); }
-    .marker-pin::before { content: ''; position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 12px; height: 12px; border-radius: 50%; background: var(--color-blue); }
-    .side-tabs { display: flex; gap: .75rem; margin-bottom: 1rem; }
-    .side-tab-panel { display: none; }
+    .marker-pin::before { content: ''; position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 10px; height: 10px; border-radius: 50%; background: var(--color-blue); }
+    .side-tabs { display: flex; border-bottom: 1px solid var(--color-border); padding-bottom: 0.5rem; gap: 0.5rem; }
+    .side-tabs button { background: transparent; border: transparent; border-radius: var(--radius-md); padding: 0.5rem 1rem; }
+    .side-tabs button.active { background: var(--color-surface-2); color: var(--color-primary); font-weight: 700; }
+    .side-tab-panel { display: none; margin-top: 1rem; }
     .side-tab-panel.active { display: block; }
-    .loop-list, .marker-list { display: grid; gap: .75rem; max-height: 840px; overflow: auto; }
+    .loop-list, .marker-list { display: grid; gap: 1rem; max-height: 840px; overflow: auto; }
     
-    .loop-card.active { outline: 2px dashed color-mix(in srgb, var(--color-primary) 50%, transparent); }
+    .loop-card.active { border-color: var(--color-primary); box-shadow: 0 0 0 1px var(--color-primary); }
     .loop-card.playhead-inside { 
       border-color: var(--color-success); 
-      background: color-mix(in srgb, var(--color-success) 4%, var(--color-surface-2));
-      box-shadow: 0 0 8px color-mix(in srgb, var(--color-success) 15%, transparent);
+      background: color-mix(in srgb, var(--color-success) 3%, var(--color-surface-2));
     }
     
-    .loop-meta { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: .75rem; color: var(--color-text-muted); font-size: var(--text-sm); }
-    .pill { display: inline-flex; align-items: center; gap: .35rem; padding: .25rem .6rem; border-radius: 9999px; background: var(--color-primary-highlight); font-size: var(--text-xs); color: var(--color-primary); }
-    .pill.success-pill { background: color-mix(in srgb, var(--color-success) 20%, transparent); color: var(--color-success); font-weight: bold; }
-    [data-theme="dark"] .pill { color: #fff; }
-    [data-theme="dark"] .pill.success-pill { color: color-mix(in srgb, var(--color-success) 85%, #fff); }
+    .loop-meta { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .25rem; color: var(--color-text-muted); font-size: var(--text-sm); }
+    .pill { display: inline-flex; align-items: center; gap: .35rem; padding: .25rem .6rem; border-radius: 4px; background: var(--color-surface-offset); font-size: var(--text-xs); font-weight: 500; border: 1px solid var(--color-border); }
+    .pill.success-pill { background: color-mix(in srgb, var(--color-success) 15%, transparent); color: var(--color-success); border-color: transparent; }
     
-    .marker-item { display: grid; grid-template-columns: 1fr auto; gap: .75rem; padding: 1rem; border-radius: var(--radius-lg); background: var(--color-surface-2); border: 1px solid color-mix(in srgb, var(--color-text) 8%, transparent); }
+    .marker-item { display: grid; grid-template-columns: 1fr auto; gap: 1rem; padding: 1.25rem; border-radius: var(--radius-lg); background: var(--color-surface-2); border: 1px solid var(--color-border); align-items: center; }
     .marker-actions, .loop-actions, .modal-actions { display: flex; flex-wrap: wrap; gap: .5rem; }
-    .modal-actions { justify-content: flex-end; margin-top: 1rem; }
+    .modal-actions { justify-content: flex-end; margin-top: 1.5rem; }
     .stack { display: grid; gap: .5rem; min-width: 0; }
-    .bounds-row { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
-    .notice { margin-top: .75rem; padding: 1rem; border-radius: var(--radius-lg); background: color-mix(in srgb, var(--color-blue) 10%, var(--color-surface)); color: var(--color-text-muted); font-size: var(--text-sm); }
-    .modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,.5); display: grid; place-items: center; padding: 1rem; z-index: 50; }
-    .modal-card { width: min(100%, 620px); background: var(--color-surface); border: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent); border-radius: var(--radius-xl); box-shadow: var(--shadow-md); padding: 1.25rem; }
+    .bounds-row { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+    .notice { padding: 1rem 1.25rem; border-radius: var(--radius-lg); background: var(--color-surface-2); border-left: 4px solid var(--color-primary); color: var(--color-text); font-size: var(--text-sm); }
+    .modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,.6); display: grid; place-items: center; padding: 1rem; z-index: 50; backdrop-filter: blur(4px); }
+    .modal-card { width: min(100%, 540px); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-xl); box-shadow: var(--shadow-md); padding: 2rem; }
     .hidden { display: none !important; }
-    @media (max-width: 1080px) { .main-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 1140px) { .main-grid { grid-template-columns: 1fr; } }
     @media (max-width: 760px) {
-      .app { padding: 1rem; }
-      .source-row, .control-grid, .zoom-bar, .meta-grid { grid-template-columns: 1fr; }
-      .wave-stage, canvas { height: 220px; }
+      .app { padding: 1rem; gap: 1rem; }
+      .control-grid { grid-template-columns: 1fr; }
+      .wave-stage, canvas { height: 200px; }
     }
   </style>
   <script src="capacitor.js"></script>
@@ -119,9 +120,9 @@
     </section>
 
     <section class="main-grid">
-      <div class="stack">
+      <div class="stack" style="gap: 2rem;">
         <section class="panel">
-          <h2 class="section-title">Source</h2>
+          <h2 class="section-title">AUDIO SOURCE</h2>
           <p class="muted">Load audio, place markers, and create multiple loop sets for different song sections, practice chunks, or lyric passages.</p>
           <div class="source-row">
             <label>
@@ -130,7 +131,7 @@
             </label>
           </div>
 
-          <div class="transport" style="margin-top:1rem;">
+          <div class="transport">
             <button id="playBtn" class="primary" type="button">Play</button>
             <button id="pauseBtn" type="button">Pause</button>
             <button id="stopBtn" type="button">Stop</button>
@@ -141,10 +142,10 @@
             <button id="loopOffBtn" class="active" type="button">Loop off</button>
           </div>
 
-          <div class="mode-row" style="margin-top:.75rem;">
+          <div class="mode-row">
             <button id="fullMixBtn" class="active" type="button">Full mix</button>
-            <button id="vocalBtn" type="button">Vocal focus</button>
-            <button id="instBtn" type="button">Instrumental focus</button>
+            <button id="vocalBtn" type="button">Vocal separation</button>
+            <button id="instBtn" type="button">Instrumental separation</button>
           </div>
 
           <div class="control-grid">
@@ -180,11 +181,11 @@
             <div class="meta-card"><div class="muted">Markers</div><strong id="markerCount">0</strong></div>
             <div class="meta-card"><div class="muted">Loop sets</div><strong id="loopSetCount">0</strong></div>
           </div>
-          <div class="notice" id="statusBox">Ready. Use Export/Import to save and load project setups.</div>
+          <div class="notice" id="statusBox">Loaded snapshot: 0 markers, 2 loops.</div>
         </section>
 
         <section class="panel timeline-shell">
-          <h2 class="section-title">Waveform</h2>
+          <h2 class="section-title">VISUAL TRACK</h2>
           <p class="muted">Zoom in for more precise looping. The scrollable waveform shows markers, the active loop, and all saved loop sets as overlays.</p>
           <div class="zoom-bar">
             <div class="muted">Zoom</div>
@@ -199,11 +200,11 @@
               <div class="playhead" id="playhead"></div>
             </div>
           </div>
-          <div class="timeline-actions" style="margin-top:.75rem;">
-<button id="jumpLoopBtn" type="button">Jump to loop start</button>
-<button id="clearLoopBtn" type="button">Clear active loop</button>
-<button id="clearMarkersBtn" type="button">Clear markers</button>
-<button id="exportProjectBtn" type="button">Export project JSON</button>
+          <div class="timeline-actions">
+            <button id="jumpLoopBtn" type="button">Jump to loop start</button>
+            <button id="clearLoopBtn" type="button">Clear active loop</button>
+            <button id="clearMarkersBtn" type="button">Clear markers</button>
+            <button id="exportProjectBtn" type="button">Export project JSON</button>
             
             <label style="display: inline-block;">
               <span class="hidden">Import project JSON</span>
@@ -216,10 +217,10 @@
 
       <div class="stack">
         <section class="panel">
-          <h2 class="section-title">Saved items</h2>
+          <h2 class="section-title">SAVED ITEMS</h2>
           <p class="muted">Use the tab buttons to switch between saved loop sets and markers.</p>
           <div class="side-tabs">
-            <button id="savedLoopsTabBtn" type="button" class="active">Saved loop sets</button>
+            <button id="savedLoopsTabBtn" type="button" class="active">Loop sets</button>
             <button id="markersTabBtn" type="button">Markers</button>
           </div>
           <div class="side-tab-panel active" id="savedLoopsPanel">
@@ -237,9 +238,9 @@
     <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="saveLoopTitle">
       <h2 class="section-title" id="saveLoopTitle">Save loop set</h2>
       <p class="muted">Name this loop set and add lyrics only if you need them.</p>
-      <div class="stack" style="margin-top:1rem;">
+      <div class="stack" style="margin-top:1.25rem;">
         <label class="stack">
-          <span class="muted">Loop set name</span>
+          <span class="muted">Loop name</span>
           <input id="saveLoopNameInput" type="text" placeholder="Verse 1 practice">
         </label>
         <label class="stack">
@@ -406,7 +407,7 @@
         const y = (h / 2) + amp * (h * 0.34);
         c.lineTo(x, y);
       });
-      c.closePath(); c.fillStyle = primary + '55'; c.fill(); c.strokeStyle = line; c.lineWidth = Math.max(1.5, w / 1200); c.stroke();
+      c.closePath(); c.fillStyle = primary + '33'; c.fill(); c.strokeStyle = line; c.lineWidth = Math.max(1.5, w / 1200); c.stroke();
       c.beginPath(); c.moveTo(0, h / 2); c.lineTo(w, h / 2); c.strokeStyle = border; c.lineWidth = 1; c.stroke();
 
       [...els.waveStage.querySelectorAll('.marker-pin, .loop-chip-overlay')].forEach(n => n.remove());
@@ -495,7 +496,7 @@
         <article class="marker-item">
           <div>
             <strong>${escapeHtml(marker.label)}</strong>
-            <div class="loop-meta"><span class="pill">${formatTime(marker.time)}</span><span>${currentMode === 'full' ? 'Mix' : currentMode === 'vocal' ? 'Vocal' : 'Instrumental'} ready</span></div>
+            <div class="loop-meta"><span class="pill">${formatTime(marker.time)}</span></div>
           </div>
           <div class="marker-actions">
             <button type="button" data-jump="${marker.id}">Jump</button>
@@ -547,7 +548,7 @@
 
     function renderLoops() {
       els.loopSetCount.textContent = String(loopSets.length);
-      if (!loopSets.length) { els.loopItems.innerHTML = '<div class="muted">No loop sets yet. Capture a loop and press Save loop set.</div>'; return; }
+      if (!loopSets.length) { els.loopItems.innerHTML = '<div class="muted">No loops yet. Capture a loop and press Save loop set.</div>'; return; }
       
       const now = audio.currentTime || 0;
       els.loopItems.innerHTML = loopSets.map(loop => {
@@ -561,11 +562,11 @@
           </div>
           <div class="loop-meta">
             <span>${(loop.end - loop.start).toFixed(2)}s</span>
-            <span>${loop.lyrics ? 'Lyrics saved' : 'No lyrics yet'}</span>
+            <span>${loop.lyrics ? 'Lyrics saved' : 'No lyrics'}</span>
           </div>
           <div class="stack">
             <label class="stack">
-              <span class="muted">Rename loop set</span>
+              <span class="muted">Rename loop</span>
               <input type="text" value="${escapeHtml(loop.name)}" data-loopname="${loop.id}">
             </label>
             <div class="bounds-row">
@@ -618,7 +619,7 @@
         audio.currentTime = loop.start; 
         audio.play().catch(()=>{}); 
       }
-      setStatus(`Active loop set: ${loop.name}`);
+      setStatus(`Active loop: ${loop.name}`);
     }
 
     function loopGuard() {
@@ -642,7 +643,7 @@
       if (!file) return;
 
       try {
-        setStatus("Processing audio source for Android...");
+        setStatus("Processing audio source...");
         const { blobUrl, blob } = await getAndroidPlayableUrl(file);
 
         audio.src = '';
@@ -668,8 +669,8 @@
         
         setStatus(`${file.name} loaded successfully.`);
       } catch (err) {
-        console.error("Android audio loading error:", err);
-        setStatus("Android media link error: " + err.message);
+        console.error("Audio loading error:", err);
+        setStatus("Media error: " + err.message);
       }
     });
 
@@ -713,7 +714,7 @@
           updateLoopOverlay();
           renderLoops();
           drawWaveform();
-          setStatus(`Looping on. Automatically locked onto current section: “${matchedLoop.name}”.`);
+          setStatus(`Looping on. Locked onto current section: “${matchedLoop.name}”.`);
           return;
         }
       }
@@ -733,7 +734,6 @@
     els.clearMarkersBtn.addEventListener('click', () => { markers = []; renderMarkers(); drawWaveform(); });
     
     els.exportProjectBtn.addEventListener('click', async () => {
-      // 1. Gather the project data
       const data = { 
         exportedAt: new Date().toISOString(), 
         mode: currentMode, 
@@ -745,17 +745,15 @@
       };
       const jsonString = JSON.stringify(data, null, 2);
 
-      // 2. Safe mobile platform identification check
       let isNative = false;
       try {
         if (window.Capacitor && typeof window.Capacitor.isNativePlatform === 'function') {
           isNative = window.Capacitor.isNativePlatform();
         }
       } catch (e) {
-        console.warn('Capacitor check threw an exception, falling back to browser behavior:', e);
+        console.warn('Capacitor check threw an exception:', e);
       }
 
-      // 3. SAFE plugin verification check (using optional chaining ?. to prevent property reading crashes)
       const hasFilesystemPlugin = !!(window.Capacitor?.Plugins?.Filesystem);
 
       if (isNative && hasFilesystemPlugin) {
@@ -765,7 +763,7 @@
           await Filesystem.writeFile({
             path: 'music-player-project.json',
             data: jsonString,
-            directory: 'DOCUMENTS', // Saves it to the device's local Documents folder
+            directory: 'DOCUMENTS',
             encoding: 'utf8'
           });
           
@@ -775,31 +773,22 @@
           setStatus("Export failed: " + err.message);
         }
       } else {
-        // 4. Standard browser download fallback
         try {
           const blob = new Blob([jsonString], { type: 'application/json' }); 
           const a = document.createElement('a'); 
           a.href = URL.createObjectURL(blob); 
           a.download = 'music-player-project.json'; 
-          document.body.appendChild(a); // Append temporarily to document body for cross-browser stability
+          document.body.appendChild(a); 
           a.click();
           document.body.removeChild(a);
           URL.revokeObjectURL(a.href);
-          setStatus("Project exported to browser downloads.");
+          setStatus("Project exported to downloads.");
         } catch (err) {
-          console.error('Browser export fallback failed', err);
+          console.error('Export failed', err);
           setStatus("Export failed: " + err.message);
         }
       }
     });
-
-    function fallbackDownload(content) {
-      const blob = new Blob([content], { type: 'application/json' }); 
-      const a = document.createElement('a'); 
-      a.href = URL.createObjectURL(blob); 
-      a.download = 'LOOPah-project.json'; 
-      a.click();
-    }
 
     els.importProjectInput.addEventListener('change', e => {
       const file = e.target.files?.[0];
@@ -842,7 +831,7 @@
           setStatus(`Loaded snapshot: ${markers.length} markers, ${loopSets.length} loops.`);
         } catch (err) {
           console.error("Failed to parse project file:", err);
-          setStatus("Error reading project file. Verify JSON formatting.");
+          setStatus("Error reading project file.");
         }
         els.importProjectInput.value = '';
       };
